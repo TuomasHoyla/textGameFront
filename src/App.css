@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.red-tooltip + .tooltip.top > .tooltip-arrow {background-color: #f00;}
+
+.underLine {
+  text-decoration: underline
+}
+
+.whiteBg {
+  background-color: white;
+}
+
+.mapBorder {
+  border: lightGrey solid 2px !important;
+  padding: 5px;
+  text-align: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
