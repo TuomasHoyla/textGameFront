@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Row, Col, Grid, Tooltip, OverlayTrigger, ButtonToolbar, Overlay, Modal } from 'react-bootstrap';
+import { Button, Row, Tooltip, OverlayTrigger, ButtonToolbar} from 'react-bootstrap';
 
 const tooltip = (description) => (
   <Tooltip id="tooltip" className="App-link underLine whiteBg">
@@ -8,10 +8,8 @@ const tooltip = (description) => (
 )
 
 const getItems = (items, takeItem) => items.map(item => {
-
-
   return (
-    <Row style={{ marginTop: 2}}>
+    <Row style={{ marginTop: 2}} key={item.id}>
           <OverlayTrigger placement="left" overlay={tooltip(item.text)}>
             <Button bsStyle="warning" onClick={() => takeItem(item.id)}>{item.name}</Button>
           </OverlayTrigger>

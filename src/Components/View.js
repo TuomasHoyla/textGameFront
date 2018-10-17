@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button, Row, Col, Grid } from 'react-bootstrap';
 
 const View = ({ data }) => {
 

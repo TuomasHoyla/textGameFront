@@ -1,12 +1,11 @@
 import React from 'react'
-import { Button, Row, Col, Grid, Tooltip, OverlayTrigger, ButtonToolbar, Overlay, Modal } from 'react-bootstrap';
-import axios from 'axios'
+import { Row, ButtonToolbar } from 'react-bootstrap';
 import ItemModal from './ItemModal'
 
 const getInventory = (items, dropItem, drinkItem, setHealth) => items.map(item => {
 
   return (
-    <Row style={{ marginTop: 2}}>
+    <Row style={{ marginTop: 2}} key={item.id}>
       <ItemModal item={item} drinkItem={drinkItem} dropItem={dropItem} setHealth={setHealth}/>
   </Row>)
 })

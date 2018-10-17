@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button, Row, Col, Grid } from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 
-const drawMap = (row) => row.map(col => {
-    return <div>{col}</div>
+const drawMap = (rows) => rows.map((col, index) => {
+    return <div key={index}>{col}</div>
 })
 
 const Map = ({ data }) => {
-  return (
 
+  return (
     <div>
-      <p style={{"text-align": "center"}}><b>Map</b></p>
+      <p style={{"textAlign": "center"}}><b>Map</b></p>
       <Row className="mapBorder">
         {data.map && drawMap(data.map)}
       </Row>

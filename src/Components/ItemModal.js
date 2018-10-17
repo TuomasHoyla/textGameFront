@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Row, Col, Grid, Tooltip, OverlayTrigger, ButtonToolbar, Overlay, Modal } from 'react-bootstrap';
-import axios from 'axios'
+import { Button, Modal } from 'react-bootstrap'
 
 class ItemModal extends React.Component {
 
@@ -49,9 +48,9 @@ render() {
           </Modal.Header>
           <Modal.Body>
             <div>{this.props.item.text} </div>
-            <p bsStyle="pull-left">{this.state.message}</p>
           </Modal.Body>
           <Modal.Footer>
+            <p className="pull-left"><i>{this.state.message}</i></p>
             {this.props.item.isEdible && <Button onClick={() => {this.drinkItem(this.props.item)}}>Drink</Button>}
             <Button bsStyle="danger"onClick={() => this.dropItem(this.props.item.id)}>Drop
             </Button>

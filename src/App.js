@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Row, Col, Grid, ProgressBar } from 'react-bootstrap';
+import { Button, Row, Col, Grid, ProgressBar, ButtonToolbar } from 'react-bootstrap';
 import axios from 'axios'
-import logo from './logo.svg';
 import './App.css';
 import View from './Components/View'
 import Map from './Components/Map'
 import Inventory from './Components/Inventory'
 import RoomItems from './Components/RoomItems'
+
+const baseUrl = 'http://localhost:5000/'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,17 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:5000/')
+      .get(baseUrl)
+      .then(response => {
+        //console.log(response.data)
+        this.setState({ game: response.data })
+      })
+  }
+
+  reset = (event) => {
+    event.preventDefault()
+    axios
+      .get(baseUrl + 'reset')
       .then(response => {
         console.log(response.data)
         this.setState({ game: response.data })
@@ -28,9 +39,8 @@ class App extends Component {
   moveNorth = (event) => {
     event.preventDefault()
     axios
-      .get('http://localhost:5000/n')
+      .get(baseUrl + 'n')
       .then(response => {
-        console.log(response.data)
         this.setState({ game: response.data })
       })
   }
@@ -38,9 +48,8 @@ class App extends Component {
   moveSouth = (event) => {
     event.preventDefault()
     axios
-      .get('http://localhost:5000/s')
+      .get(baseUrl + 's')
       .then(response => {
-        console.log(response.data)
         this.setState({ game: response.data })
       })
   }
@@ -48,9 +57,8 @@ class App extends Component {
   moveEast = (event) => {
     event.preventDefault()
     axios
-      .get('http://localhost:5000/e')
+      .get(baseUrl + 'e')
       .then(response => {
-        console.log(response.data)
         this.setState({ game: response.data })
       })
   }
@@ -58,25 +66,23 @@ class App extends Component {
   moveWest = (event) => {
     event.preventDefault()
     axios
-      .get('http://localhost:5000/w')
+      .get(baseUrl + 'w')
       .then(response => {
-        console.log(response.data)
         this.setState({ game: response.data })
       })
   }
 
   dropItem = (itemId) => {
     axios
-      .get('http://localhost:5000/drop/' + itemId)
+      .get(baseUrl + 'drop/' + itemId)
       .then(response => {
-        console.log(response.data)
         this.setState({ game: response.data })
       })
   }
 
   takeItem = (itemId) => {
     axios
-      .get('http://localhost:5000/take/' + itemId)
+      .get(baseUrl + 'take/' + itemId)
       .then(response => {
         this.setState({ game: response.data })
       })
@@ -84,7 +90,7 @@ class App extends Component {
 
   drinkItem = (itemId) => {
     axios
-      .get('http://localhost:5000/drink/' + itemId)
+      .get(baseUrl + 'drink/' + itemId)
       .then(response => {
         this.setState({ game: response.data })
       }
@@ -97,14 +103,16 @@ class App extends Component {
 
   render() {
     return(
-    <div class="container-fluid">
+    <div className="container-fluid">
       <Grid>
           <Col xs={12} md={12}>
+            <ButtonToolbar>
+              <Button bsStyle="danger" bsSize="xsmall" disabled={true} style={{ marginTop: 5}} onClick={this.reset}>Reset map</Button>
+            </ButtonToolbar>
             <h3>Fez Ferguson</h3>
-
           </Col>
           <Col xs={4} md={4}>
-            <p>Health: <ProgressBar now={this.state.game.health} label={`${this.state.game.health}%`}/></p>
+            Health: <ProgressBar now={this.state.game.health} label={`${this.state.game.health}%`}/>
                <View data={this.state.game}/>
                <Row style={{ marginTop: 40, marginLeft: 20 }}>
                  {this.state.game.location && this.state.game.location.locationItems.length > 0 &&
@@ -140,8 +148,6 @@ class App extends Component {
           </div>
         </Col>
         </Col>
-        <Row>
-        </Row>
       </Grid>
     </div>
   )}
