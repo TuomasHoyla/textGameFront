@@ -7,8 +7,8 @@ import Map from './Components/Map'
 import Inventory from './Components/Inventory'
 import RoomItems from './Components/RoomItems'
 
-//const baseUrl = 'http://localhost:5000/'
-const baseUrl = 'https://arcane-plateau-73839.herokuapp.com/'
+const baseUrl = 'http://localhost:5000/'
+//const baseUrl = 'https://arcane-plateau-73839.herokuapp.com/'
 
 class App extends Component {
   constructor(props) {
@@ -108,7 +108,7 @@ class App extends Component {
       <Grid>
           <Col xs={12} md={12}>
             <ButtonToolbar>
-              <Button bsStyle="danger" bsSize="xsmall" disabled={true} style={{ marginTop: 5}} onClick={this.reset}>Reset map</Button>
+              <Button bsStyle="danger" bsSize="xsmall" disabled={false} style={{ marginTop: 5}} onClick={this.reset}>Reset map</Button>
             </ButtonToolbar>
             <h3>Fez Ferguson</h3>
           </Col>
@@ -116,9 +116,9 @@ class App extends Component {
             Health: <ProgressBar now={this.state.game.health} label={`${this.state.game.health}%`}/>
                <View data={this.state.game}/>
                <Row style={{ marginTop: 40, marginLeft: 20 }}>
-                 {this.state.game.location && this.state.game.location.locationItems.length > 0 &&
+                 {this.state.game.location && this.state.game.location.roomItems.length > 0 &&
                   <RoomItems
-                    data={this.state.game.location.locationItems}
+                    data={this.state.game.location.roomItems}
                     takeItem={this.takeItem}
                     options={{header: 'Items on the ground:'}}
                   />}
