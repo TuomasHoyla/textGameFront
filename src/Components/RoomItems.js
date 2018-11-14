@@ -10,7 +10,7 @@ const tooltip = (description) => (
 const getItems = (items, takeItem) => items.map(item => {
   return (
     <Row style={{ marginTop: 2}} key={item.id}>
-          <OverlayTrigger placement="left" overlay={tooltip(item.text)}>
+          <OverlayTrigger placement="top" overlay={tooltip(item.text)}>
             <Button bsStyle="warning" onClick={() => takeItem(item.id)}>{item.name}</Button>
           </OverlayTrigger>
   </Row>)
