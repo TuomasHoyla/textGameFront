@@ -7,8 +7,8 @@ import Map from './Components/Map'
 import Inventory from './Components/Inventory'
 import RoomItems from './Components/RoomItems'
 
-const baseUrl = 'http://localhost:5000/'
-//const baseUrl = 'https://arcane-plateau-73839.herokuapp.com/'
+//const baseUrl = 'http://localhost:5000/'
+const baseUrl = 'https://arcane-plateau-73839.herokuapp.com/'
 
 class App extends Component {
   constructor(props) {
