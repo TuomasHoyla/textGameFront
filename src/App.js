@@ -116,7 +116,7 @@ class App extends Component {
             Health: <ProgressBar now={this.state.game.health} label={`${this.state.game.health}%`}/>
                <View data={this.state.game}/>
                <Row style={{ marginTop: 40, marginLeft: 20 }}>
-                 {this.state.game.location && this.state.game.location.roomItems.length > 0 &&
+                 {this.state.game.location && this.state.game.location.room && this.state.game.location.roomItems.length > 0 &&
                   <RoomItems
                     data={this.state.game.location.roomItems}
                     takeItem={this.takeItem}
